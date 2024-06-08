@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(90deg, #ff0000, #000, #0000ff);
+            color: rgba(255, 255, 255, 0.488);
+        }
+        h2 {
+            color: #ffffff;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #password {
+            font-size: 18px;        
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            color: black;
+        }
+        #generateBtn {
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #lengthInput {
+            font-size: 14px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Random Password Generator</h2>
+        <input type="number" id="lengthInput" placeholder="Password Length (1-30)" min="1" max="30">
+        <div id="password"></div>
+        <button id="generateBtn" onclick="generatePassword()">Generate Password</button>
+    </div>
+    <script>
+        function generatePassword() {
+            var length = document.getElementById("lengthInput").value || 10;
+            var charset = "!'^#+$%&/{([)]=}*?)}*?-_,;<|>1234567890qwertyuıopğüasdfghjklşizxcvbnmöçQWERTYUIOPĞÜASDFGHJKLŞİZXCVBNMÖÇ";
+
+            var password = "";
+            for (var i = 0; i < length; i++) {
+                var randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+            
+            document.getElementById("password").textContent = password;
+        }
+    </script>
+</body>
+</html>
